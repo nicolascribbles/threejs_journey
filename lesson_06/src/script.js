@@ -1,4 +1,16 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
+
+// Cursor
+const cursor = {
+    x: 0,
+    y: 0,
+}
+window.addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = -(event.clientY / sizes.height - 0.5)
+})
 
 /**
  * Base
@@ -8,8 +20,8 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Sizes
 const sizes = {
-    width: 800,
-    height: 600
+    width: window.innerWidth - 18,
+    height: window.innerHeight - 20,
 }
 
 // Scene
@@ -21,19 +33,29 @@ const mesh = new THREE.Mesh(
     new THREE.MeshBasicMaterial({ color: 0xff0000 })
 )
 scene.add(mesh)
-
 // Camera
-const camera = new THREE.PerspectiveCamera(
-    75, // degrees vertifcal vision angle also called fov
-    sizes.width / sizes.height, // aspect ratio
-    0.1, // near clipping plane
-    100 // far clipping plane
+const aspectRatio = sizes.width / sizes.height
+
+const camera = new THREE.OrthographicCamera(
+    -1 * aspectRatio,
+    1 * aspectRatio,
+    1,
+    -1,
+    0.1,
+    100
+    // 75, // degrees vertifcal vision angle also called fov
+    // sizes.width / sizes.height, // aspect ratio
+    // 0.1, // near clipping plane
+    // 100 // far clip ping plane
 )
-camera.position.x = 2
-camera.position.y = 2
-camera.position.z = 2
+// camera.position.x = 2
+// camera.position.y = 2
+camera.position.z = 3
 camera.lookAt(mesh.position)
 scene.add(camera)
+
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({
@@ -49,7 +71,14 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
 
     // Update objects
-    mesh.rotation.y = elapsedTime;
+    // mesh.rotation.y = elapsedTime;
+
+    // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3
+    // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3
+    // camera.position.y = cursor.y * 5
+    // camera.lookAt(mesh.position)
+
+    controls.update()
 
     // Render
     renderer.render(scene, camera)
