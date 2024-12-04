@@ -80,6 +80,7 @@ const tick = () =>
 
     controls.update()
 
+
     // Render
     renderer.render(scene, camera)
 
