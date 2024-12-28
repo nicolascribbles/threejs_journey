@@ -14,11 +14,15 @@ const image = new Image()
 /**
  * Textures
  */
+
+const loadingManager = new THREE.LoadingManager()
 const textureLoader = new THREE.TextureLoader()
 const texture = textureLoader.load('textures/door/color.jpg')
 
 // // in latest versiosn of three.js we need tp specify it by setting the  colorSpace to THREE.SRGBColorSpace
 // // texture.colorSpace = THREE.SRGBColorSpace
+
+
 /**
  * Base
  */
