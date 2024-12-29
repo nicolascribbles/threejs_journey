@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import GUI from 'lil-gui'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 
 /**
  * Base
@@ -10,7 +12,8 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-
+// GUI
+const gui = new GUI()
 /**
  * Textures
  */
@@ -48,15 +51,36 @@ matcapsTextureOne.colorSpace = THREE.SRGBColorSpace
 /**
  * Objects
  */
-const material = new THREE.MeshMatcapMaterial()
-// material.map = doorColorTexture
-material.color = new THREE.Color('purple')
+const material = new THREE.MeshStandardMaterial()
+material.metalness = 0.7
+material.roughness = 0.65
+
+gui.add(material, 'metalness').min(0).max(1).step(0.0001)
+gui.add(material, 'roughness').min(0).max(1).step(0.0001)
+
+
+material.map = doorColorTexture
+material.aoMap = doorAmbientOcclusionTexture
+material.aoMapIntensity = 3
+// material.color = new THREE.Color('purple')
 // material.opacity = 0.5
 // material.transparency = true
 // material.alphaMap = doorAlphaTexture
 material.side = THREE.DoubleSide
-material.matcap = matcapsTextureOne
+// material.matcap = matcapsTextureOne
 // material.wireframe = true
+material.shininess = 100
+material.displacementMap = doorHeightTexture
+material.displacementScale = 0.02
+
+/**
+ * Environment map
+ */
+const rgbeLoader = new RGBELoader()
+rgbeLoader.load('./textures/environmentMap/2k.hdr', (environmentMap) =>
+{
+    console.log(environmentMap)
+})
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(0.5, 16, 16),
@@ -65,7 +89,7 @@ const sphere = new THREE.Mesh(
 sphere.position.x = - 1.5
 
 const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(1, 1),
+    new THREE.PlaneGeometry(1, 1, 100, 100),
     material
 )
 
@@ -76,6 +100,28 @@ const torus = new THREE.Mesh(
 torus.position.x = 1.5
 
 scene.add(sphere, plane, torus)
+
+/**
+ * Lights
+ *
+ * */
+const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+scene.add(ambientLight)
+
+const pointLight = new THREE.PointLight(0xffffff, 30)
+pointLight.position.x = 2
+pointLight.position.y = 3
+pointLight.position.z = 4
+scene.add(pointLight)
+
+/**
+ * Environment map
+ */
+
+rgbeLoader.load('./textures/environmentMap/2k.hdr', (environmentMap) =>
+{
+    scene.background = environmentMap
+})
 
 /**
  * Sizes
