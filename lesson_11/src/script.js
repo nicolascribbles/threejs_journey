@@ -10,6 +10,42 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader()
+
+// door textures
+const doorAlphaTexture = textureLoader.load('./textures/door/alpha.jpg')
+const doorAmbientOcclusionTexture = textureLoader.load('./textures/door/ambientOcclusion.jpg')
+const doorColorTexture = textureLoader.load('./textures/door/color.jpg')
+const doorHeightTexture = textureLoader.load('./textures/door/height.jpg')
+const doorMetalnessTexture = textureLoader.load('./textures/door/metalness.jpg')
+const doorNormalTexture = textureLoader.load('./textures/door/color.jpg')
+const doorRoughnessTexture = textureLoader.load('./textures/door/color.jpg')
+
+doorColorTexture.colorSpace = THREE.SRGBColorSpace
+
+// environment map texture
+// const environmentMap = textureLoader.load('/textures/environmentMap/2k.hdr')
+
+// gradients textures
+const gradientTexture = textureLoader.load('./textures/gradients/3.jpg')
+
+// matcaps textures
+const matcapsTextureOne = textureLoader.load('./textures/matcaps/1.png')
+const matcapsTextureTwo = textureLoader.load('./textures/matcaps/2.png')
+const matcapsTextureThree = textureLoader.load('./textures/matcaps/3.png')
+const matcapsTextureFour = textureLoader.load('./textures/matcaps/4.png')
+const matcapsTextureFive = textureLoader.load('./textures/matcaps/5.png')
+const matcapsTextureSix = textureLoader.load('./textures/matcaps/6.png')
+const matcapsTextureSeven = textureLoader.load('./textures/matcaps/7.png')
+const matcapsTextureEight = textureLoader.load('./textures/matcaps/8.png')
+
+matcapsTextureOne.colorSpace = THREE.SRGBColorSpace
+
+/**
 /**
  * Sizes
  */
@@ -64,6 +100,16 @@ const clock = new THREE.Clock()
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+
+    // Update objects
+    sphere.rotation.y = 0.1 * elapsedTime
+    plane.rotation.y = 0.1 * elapsedTime
+    torus.rotation.y = 0.1 * elapsedTime
+
+    sphere.rotation.x = - 0.15 * elapsedTime
+    plane.rotation.x = - 0.15 * elapsedTime
+    torus.rotation.x = - 0.15 * elapsedTime
+    
 
     // Update controls
     controls.update()
