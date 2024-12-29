@@ -51,27 +51,46 @@ matcapsTextureOne.colorSpace = THREE.SRGBColorSpace
 /**
  * Objects
  */
-const material = new THREE.MeshStandardMaterial()
-material.metalness = 0.7
-material.roughness = 0.65
+const material = new THREE.MeshPhysicalMaterial()
+material.metalness = 0
+material.roughness = 0
 
 gui.add(material, 'metalness').min(0).max(1).step(0.0001)
 gui.add(material, 'roughness').min(0).max(1).step(0.0001)
 
 
-material.map = doorColorTexture
+// material.map = doorColorTexture
 material.aoMap = doorAmbientOcclusionTexture
 material.aoMapIntensity = 3
 // material.color = new THREE.Color('purple')
 // material.opacity = 0.5
-// material.transparency = true
+material.transparency = true
 // material.alphaMap = doorAlphaTexture
 material.side = THREE.DoubleSide
 // material.matcap = matcapsTextureOne
 // material.wireframe = true
 material.shininess = 100
 material.displacementMap = doorHeightTexture
-material.displacementScale = 0.02
+material.displacementScale = 0.1
+material.metalnessMap = doorMetalnessTexture
+material.roughnessMap = doorNormalTexture
+material.normalMap = doorNormalTexture
+material.normalScale.set(0.5, 0.5)
+material.alphaMap = doorAlphaTexture
+material.clearcoat = 1
+material.clearcoatRoughness = 0
+
+// material.sheen = 1
+// material.sheenRoughness = 0.25
+// material.sheenColor.set(1, 1, 1)
+
+// material.iridescence = 1
+// material.iridescenceIOR = 1
+// material.iridescenceThicknessRange = [ 100, 88 ]
+
+material.transmission = 1
+material.ior = 1.5
+material.thickness = 0.0005
 
 /**
  * Environment map
@@ -83,7 +102,7 @@ rgbeLoader.load('./textures/environmentMap/2k.hdr', (environmentMap) =>
 })
 
 const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.5, 16, 16),
+    new THREE.SphereGeometry(0.5, 64, 64),
     material
 )
 sphere.position.x = - 1.5
