@@ -20,7 +20,7 @@ const scene = new THREE.Scene()
 const ambientLight = new THREE.AmbientLight('white', 0.5)
 scene.add(ambientLight)
 
-gui.add(ambientLight, 'intensity').min(0).max(3).step(0.001).name('ambient light intensity')
+gui.add(ambientLight, 'intensity').min(0).max(10).step(0.001).name('ambient light intensity')
 gui.addColor(ambientLight, 'color')
     .name('ambient light color')
 
@@ -28,7 +28,7 @@ const directionalLight = new THREE.DirectionalLight('pink', 0.5)
 directionalLight.position.set(1, 1, 1)
 scene.add(directionalLight)
 
-gui.add(directionalLight, 'intensity').min(0).max(3).step(0.001).name('directional light intensity')
+gui.add(directionalLight, 'intensity').min(0).max(10).step(0.001).name('directional light intensity')
 gui.addColor(directionalLight, 'color')
     .name('directional light color')
 gui.add(directionalLight.position, 'x').name('light direction x-axis').min(-3).max(3).step(0.001)
@@ -38,7 +38,7 @@ gui.add(directionalLight.position, 'z').name('light direction z-axis').min(-3).m
 const hemisphereLight  = new THREE.HemisphereLight('lightpink', 'lightblue', 0.9)
 scene.add(hemisphereLight)
 
-gui.add(hemisphereLight, 'intensity').min(0).max(3).step(0.001).name('hemisphere light intensity')
+gui.add(hemisphereLight, 'intensity').min(0).max(10).step(0.001).name('hemisphere light intensity')
 gui.addColor(hemisphereLight, 'groundColor')
     .name('hemisphere light ground color')
 gui.addColor(hemisphereLight, 'color')
@@ -49,7 +49,7 @@ const pointLight = new THREE.PointLight('red', 1.5, 10, 3)
 pointLight.position.set(2, 3, 4)
 scene.add(pointLight)
 
-gui.add(pointLight, 'intensity').min(0).max(3).step(0.001).name('point light intensity')
+gui.add(pointLight, 'intensity').min(0).max(10).step(0.001).name('point light intensity')
 gui.addColor(pointLight, 'color')
     .name('point light color')
 gui.add(pointLight.position, 'x').name('light position x-axis').min(-15).max(15).step(0.001)
@@ -59,10 +59,10 @@ gui.add(pointLight, 'distance').min(0).max(15).step(0.001).name('point light dis
 gui.add(pointLight, 'decay').min(0).max(5).step(0.001).name('point light decay')
 
 const rectAreaLight = new THREE.RectAreaLight('blue', 3, 1, 1)
-rectAreaLight.position.set(0, 0, 3)
+rectAreaLight.position.set(0, 1, 2)
 scene.add(rectAreaLight)
 
-gui.add(rectAreaLight, 'intensity').min(0).max(3).step(0.001).name('rect area light intensity')
+gui.add(rectAreaLight, 'intensity').min(0).max(10).step(0.001).name('rect area light intensity')
 gui.addColor(rectAreaLight, 'color')
     .name('rect area light color')
 gui.add(rectAreaLight.position, 'x').name('light position x-axis').min(-3).max(3).step(0.001)
