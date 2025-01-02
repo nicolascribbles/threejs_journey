@@ -17,10 +17,17 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
+// Axes helper
+const axesHelper = new THREE.AxesHelper(2)
 /**
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
+const matcapTexture = textureLoader.load(
+    './textures/matcaps/6.png'
+)
+console.log(matcapTexture)
+matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 /**
  * FontLoader
@@ -39,18 +46,22 @@ fontLoader.load(
                 font: font,
                 size: 0.5,
                 depth: 0.2,
-                curveSegments: 12,
+                curveSegments: 4,
                 bevelEnabled: true,
                 bevelThickness: 0.03,
                 bevelSize: 0.02,
                 bevelOffset: 0,
-                bevelSegments: 5
+                bevelSegments: 3
             }
         )
+        textGeo.center()
 
-        const textMaterial = new THREE.MeshBasicMaterial({ color: 'pink' })
+        const textMaterial = new THREE.MeshMatcapMaterial({
+            matcap: matcapTexture
+        })
+
+
         const textMesh = new THREE.Mesh(textGeo, textMaterial)
-        textMesh.position.set(0, 0, 2)
 
         scene.add(textMesh)
     }
