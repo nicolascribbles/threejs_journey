@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import GUI from 'lil-gui'
+// import typefaceFont from './fonts/helvetiker_regular.typeface.json'
 
 /**
  * Base
@@ -20,14 +23,38 @@ const scene = new THREE.Scene()
 const textureLoader = new THREE.TextureLoader()
 
 /**
- * Object
+ * FontLoader
  */
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial()
-)
+const fontLoader = new FontLoader()
 
-scene.add(cube)
+fontLoader.load(
+    './fonts/helvetiker_regular.typeface.json',
+    (font) =>
+    {
+        console.log('loaded font')
+        const textGeo = new TextGeometry(
+            'Girls rule',
+            
+            {
+                font: font,
+                size: 0.5,
+                depth: 0.2,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 0.03,
+                bevelSize: 0.02,
+                bevelOffset: 0,
+                bevelSegments: 5
+            }
+        )
+
+        const textMaterial = new THREE.MeshBasicMaterial({ color: 'pink' })
+        const textMesh = new THREE.Mesh(textGeo, textMaterial)
+        textMesh.position.set(0, 0, 2)
+
+        scene.add(textMesh)
+    }
+)
 
 /**
  * Sizes
