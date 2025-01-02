@@ -25,11 +25,15 @@ gui.addColor(ambientLight, 'color')
     .name('ambient light color')
 
 const directionalLight = new THREE.DirectionalLight('pink', 0.5)
+directionalLight.position.set(1, 1, 1)
 scene.add(directionalLight)
 
 gui.add(directionalLight, 'intensity').min(0).max(3).step(0.001).name('directional light intensity')
 gui.addColor(directionalLight, 'color')
     .name('directional light color')
+gui.add(directionalLight.position, 'x').name('light direction x-axis').min(-3).max(3).step(0.001)
+gui.add(directionalLight.position, 'y').name('light direction y-axis').min(-3).max(3).step(0.001)
+gui.add(directionalLight.position, 'z').name('light direction z-axis').min(-3).max(3).step(0.001)
 /**
  * Objects
  */
