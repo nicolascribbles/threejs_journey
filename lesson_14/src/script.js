@@ -19,7 +19,7 @@ const scene = new THREE.Scene()
  */
 const ambientLight = new THREE.AmbientLight('white', 0.5)
 scene.add(ambientLight)
-gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001).name('ambient light intensity')
+gui.add(ambientLight, 'intensity').min(0).max(3).step(0.001).name('ambient light intensity')
 gui.addColor(ambientLight, 'color')
     .name('ambient light color')
 
