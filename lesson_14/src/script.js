@@ -58,6 +58,19 @@ gui.add(pointLight.position, 'z').name('light position z-axis').min(-15).max(15)
 gui.add(pointLight, 'distance').min(0).max(15).step(0.001).name('point light distance')
 gui.add(pointLight, 'decay').min(0).max(5).step(0.001).name('point light decay')
 
+const rectAreaLight = new THREE.RectAreaLight('blue', 3, 1, 1)
+rectAreaLight.position.set(0, 0, 3)
+scene.add(rectAreaLight)
+
+gui.add(rectAreaLight, 'intensity').min(0).max(3).step(0.001).name('rect area light intensity')
+gui.addColor(rectAreaLight, 'color')
+    .name('rect area light color')
+gui.add(rectAreaLight.position, 'x').name('light position x-axis').min(-3).max(3).step(0.001)
+gui.add(rectAreaLight.position, 'y').name('light position y-axis').min(-3).max(3).step(0.001)
+gui.add(rectAreaLight.position, 'z').name('light position z-axis').min(-3).max(3).step(0.001)
+gui.add(rectAreaLight, 'width').min(0).max(10).step(0.001).name('rect area light width')
+gui.add(rectAreaLight, 'height').min(0).max(10).step(0.001).name('rect area light height')
+
 /**
  * Objects
  */
