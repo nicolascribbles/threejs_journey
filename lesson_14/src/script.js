@@ -60,17 +60,44 @@ gui.add(pointLight, 'decay').min(0).max(5).step(0.001).name('point light decay')
 
 const rectAreaLight = new THREE.RectAreaLight('blue', 3, 1, 1)
 rectAreaLight.position.set(0, 1, 2)
+rectAreaLight.lookAt(new THREE.Vector3())
 scene.add(rectAreaLight)
 
 gui.add(rectAreaLight, 'intensity').min(0).max(10).step(0.001).name('rect area light intensity')
 gui.addColor(rectAreaLight, 'color')
     .name('rect area light color')
-gui.add(rectAreaLight.position, 'x').name('light position x-axis').min(-3).max(3).step(0.001)
-gui.add(rectAreaLight.position, 'y').name('light position y-axis').min(-3).max(3).step(0.001)
-gui.add(rectAreaLight.position, 'z').name('light position z-axis').min(-3).max(3).step(0.001)
+gui.add(rectAreaLight.position, 'x').name('light position x-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
+gui.add(rectAreaLight.position, 'y').name('light position y-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
+gui.add(rectAreaLight.position, 'z').name('light position z-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
 gui.add(rectAreaLight, 'width').min(0).max(10).step(0.001).name('rect area light width')
 gui.add(rectAreaLight, 'height').min(0).max(10).step(0.001).name('rect area light height')
 
+const spotLight = new THREE.SpotLight('yellow', 1.5, 10, Math.PI * 0.1, 0.8, 1)
+spotLight.position.set(0, 1, 2)
+scene.add(spotLight)
+
+
+gui.add(spotLight, 'intensity').min(0).max(10).step(0.001).name('spot light intensity')
+gui.addColor(spotLight, 'color')
+    .name('spot light color')
+gui.add(spotLight.position, 'x').name('light position x-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    spotLight.updateMatrixWorld()
+})
+gui.add(spotLight.position, 'y').name('light position y-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    spotLight.updateMatrixWorld()
+})
+gui.add(spotLight.position, 'z').name('light position z-axis').min(-3).max(3).step(0.001).onFinishChange(() => {
+    spotLight.updateMatrixWorld()
+})
+gui.add(spotLight, 'angle').min(0).max(Math.PI).step(0.001).name('spot light angle')
+gui.add(spotLight, 'penumbra').min(0).max(1).step(0.001).name('spot light penumbra')
+gui.add(spotLight, 'decay').min(0).max(1).step(0.001).name('spot light decay')
 /**
  * Objects
  */
