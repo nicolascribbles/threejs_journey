@@ -34,6 +34,17 @@ gui.addColor(directionalLight, 'color')
 gui.add(directionalLight.position, 'x').name('light direction x-axis').min(-3).max(3).step(0.001)
 gui.add(directionalLight.position, 'y').name('light direction y-axis').min(-3).max(3).step(0.001)
 gui.add(directionalLight.position, 'z').name('light direction z-axis').min(-3).max(3).step(0.001)
+
+const hemisphereLight  = new THREE.HemisphereLight('lightpink', 'lightblue', 0.9)
+scene.add(hemisphereLight)
+
+gui.add(hemisphereLight, 'intensity').min(0).max(3).step(0.001).name('hemisphere light intensity')
+gui.addColor(hemisphereLight, 'groundColor')
+    .name('hemisphere light ground color')
+gui.addColor(hemisphereLight, 'color')
+    .name('hemisphere light sky color')
+
+
 /**
  * Objects
  */
