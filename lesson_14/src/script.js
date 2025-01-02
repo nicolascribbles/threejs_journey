@@ -45,7 +45,7 @@ gui.addColor(hemisphereLight, 'color')
     .name('hemisphere light sky color')
 
 
-const pointLight = new THREE.PointLight('red', 1.5)
+const pointLight = new THREE.PointLight('red', 1.5, 10, 3)
 pointLight.position.set(2, 3, 4)
 scene.add(pointLight)
 
@@ -55,7 +55,8 @@ gui.addColor(pointLight, 'color')
 gui.add(pointLight.position, 'x').name('light position x-axis').min(-15).max(15).step(0.001)
 gui.add(pointLight.position, 'y').name('light position y-axis').min(-15).max(15).step(0.001)
 gui.add(pointLight.position, 'z').name('light position z-axis').min(-15).max(15).step(0.001)
-
+gui.add(pointLight, 'distance').min(0).max(15).step(0.001).name('point light distance')
+gui.add(pointLight, 'decay').min(0).max(5).step(0.001).name('point light decay')
 
 /**
  * Objects
