@@ -98,6 +98,16 @@ gui.add(spotLight.position, 'z').name('light position z-axis').min(-3).max(3).st
 gui.add(spotLight, 'angle').min(0).max(Math.PI).step(0.001).name('spot light angle')
 gui.add(spotLight, 'penumbra').min(0).max(1).step(0.001).name('spot light penumbra')
 gui.add(spotLight, 'decay').min(0).max(1).step(0.001).name('spot light decay')
+
+spotLight.target.position.x = - 0.75
+spotLight.target.position.y = 0
+
+gui.add(spotLight.target.position, 'x').min(-3).max(3).step(0.001).name('spot light target x-axis')
+gui.add(spotLight.target.position, 'y').min(-3).max(3).step(0.001).name('spot light target y-axis')
+
+// look at the spotlight
+scene.add(spotLight.target)
+
 /**
  * Objects
  */
