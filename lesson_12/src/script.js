@@ -63,24 +63,45 @@ fontLoader.load(
 
         const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
 
-        console.time('TorusGeometry')
-        for (let i=0; i<100; i++) {
-            
-            const donut = new THREE.Mesh(donutGeometry, material)
-            
-            donut.position.x = (Math.random() - 0.5) * 10
-            donut.position.y = (Math.random() - 0.5) * 10
-            donut.position.z = (Math.random() - 0.5) * 10
-    
-            donut.rotation.x = Math.random() * Math.PI
-            donut.rotation.y = Math.random() * Math.PI
-
-            const scale = Math.random()
-            donut.scale.set(scale, scale, scale)
-
-            scene.add(donut)
+        const settings = {
+            donutsTotal: 100
         }
-        console.timeEnd('TorusGeometry')
+
+        gui.add(settings, 'donutsTotal')
+            .min(0).max(1000).step(1)
+            .name('Donuts total')
+            .onFinishChange(() => {
+                createDonuts(settings.donutsTotal)
+            })
+
+            const createDonuts = (count) => {
+                // Clear existing donuts
+                for (let i = scene.children.length - 1; i >= 0; i--) {
+                    const obj = scene.children[i]
+                    if (obj.geometry === donutGeometry) {
+                        scene.remove(obj)
+                    }
+                }
+            
+                // Add new donuts
+                for (let i = 0; i < count; i++) {
+                    const donut = new THREE.Mesh(donutGeometry, material)
+            
+                    donut.position.x = (Math.random() - 0.5) * 10
+                    donut.position.y = (Math.random() - 0.5) * 10
+                    donut.position.z = (Math.random() - 0.5) * 10
+            
+                    donut.rotation.x = Math.random() * Math.PI
+                    donut.rotation.y = Math.random() * Math.PI
+            
+                    const scale = Math.random()
+                    donut.scale.set(scale, scale, scale)
+            
+                    scene.add(donut)
+                }
+            }
+            
+            createDonuts(settings.donutsTotal)
     }
 )
 
