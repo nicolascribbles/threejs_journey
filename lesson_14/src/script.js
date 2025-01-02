@@ -19,10 +19,17 @@ const scene = new THREE.Scene()
  */
 const ambientLight = new THREE.AmbientLight('white', 0.5)
 scene.add(ambientLight)
+
 gui.add(ambientLight, 'intensity').min(0).max(3).step(0.001).name('ambient light intensity')
 gui.addColor(ambientLight, 'color')
     .name('ambient light color')
 
+const directionalLight = new THREE.DirectionalLight('pink', 0.5)
+scene.add(directionalLight)
+
+gui.add(directionalLight, 'intensity').min(0).max(3).step(0.001).name('directional light intensity')
+gui.addColor(directionalLight, 'color')
+    .name('directional light color')
 /**
  * Objects
  */
