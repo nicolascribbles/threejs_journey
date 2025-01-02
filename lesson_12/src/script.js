@@ -17,8 +17,6 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene()
 
-// Axes helper
-const axesHelper = new THREE.AxesHelper(2)
 /**
  * Textures
  */
@@ -26,7 +24,6 @@ const textureLoader = new THREE.TextureLoader()
 const matcapTexture = textureLoader.load(
     './textures/matcaps/6.png'
 )
-console.log(matcapTexture)
 matcapTexture.colorSpace = THREE.SRGBColorSpace
 
 /**
@@ -38,7 +35,6 @@ fontLoader.load(
     './fonts/helvetiker_regular.typeface.json',
     (font) =>
     {
-        console.log('loaded font')
         const textGeo = new TextGeometry(
             'Girls rule',
             
