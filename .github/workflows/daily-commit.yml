@@ -1,0 +1,32 @@
+name: Random Daily Commits
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight UTC
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.name 'nicolascribbles'
+          git config --global user.email 'nicolascribbles@gmail.com'
+
+      - name: Make random number of commits
+        run: |
+          NUMBER_OF_COMMITS=$((RANDOM % 6 + 1))
+          for i in $(seq 1 $NUMBER_OF_COMMITS)
+          do
+            echo "Update $i on $(date)" >> README.md
+            git add README.md
+            COMMIT_MESSAGE=$(git log --since=midnight --until=now --oneline | shuf -n 1 | cut -d' ' -f2-)
+            if [ -z "$COMMIT_MESSAGE" ]; then
+              COMMIT_MESSAGE="Update on $(date)"
+            fi
+            git commit -m "$COMMIT_MESSAGE"
+          done
+          git push
