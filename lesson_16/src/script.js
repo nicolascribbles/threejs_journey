@@ -56,10 +56,30 @@ coastSandRockARMTexture.wrapT = THREE.RepeatWrapping
 // )
 // scene.add(sphere)
 
-const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
+const floorMaterial = new THREE.MeshStandardMaterial({
+    side: THREE.DoubleSide,
+    roughness: 0.9,
+    transparent: true,
+    map: coastSandRockDiffTexture,
+    displacementMap: coastSandRockDispTexture,
+    displacementScale: 0.3,
+    displacementBias: -0.1,
+    differenceMap: coastSandRockDiffTexture,
+    normalMap: coastSandRockNorGLTexture,
+    metalnessMap: coastSandRockARMTexture,
+    roughnessMap: coastSandRockARMTexture,
+    aoMap: coastSandRockARMTexture,
+    alphaMap: fogGradientTexture,
+    fog: true,
+    fogColor: 0x00ff00,
+    fogDensity: 0.01,
+})
+
+gui.add(floorMaterial, 'displacementScale').min(0).max(1).step(0.001).name('displacementScale')
+gui.add(floorMaterial, 'displacementBias').min(-1).max(1).step(0.001).name('displacementBias')
 
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20, 20),
+    new THREE.PlaneGeometry(20, 20, 50, 50),
     floorMaterial
 )
 
