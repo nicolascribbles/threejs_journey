@@ -13,8 +13,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name 'nicolascribbles'
-          git config --global user.email 'nicolascribbles@gmail.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Make random number of commits
         run: |
@@ -30,3 +30,6 @@ jobs:
             git commit -m "$COMMIT_MESSAGE"
           done
           git push
+          
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
