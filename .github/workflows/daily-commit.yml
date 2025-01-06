@@ -30,6 +30,5 @@ jobs:
             git commit -m "$COMMIT_MESSAGE"
           done
           git push
-          
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
