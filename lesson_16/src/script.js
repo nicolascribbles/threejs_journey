@@ -97,6 +97,8 @@ bush4.position.set(-1, 0.05, 2.6)
 
 house.add(bush1, bush2, bush3, bush4)
 
+
+const graves = new THREE.Group()
 /**
  * Lights
  */
