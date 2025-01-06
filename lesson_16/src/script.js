@@ -24,6 +24,18 @@ const scene = new THREE.Scene()
 //     new THREE.MeshStandardMaterial({ roughness: 0.7 })
 // )
 // scene.add(sphere)
+
+const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
+
+const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(20, 20),
+    floorMaterial
+)
+
+floor.rotation.x = -(Math.PI / 2)
+
+scene.add(floor)
+
 )
 scene.add(sphere)
 
