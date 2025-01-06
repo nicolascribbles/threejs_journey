@@ -41,6 +41,18 @@ scene.add(floor)
 // House
 const house = new THREE.Group()
 scene.add(house)
+
+// Walls
+const wallsGeometry = new THREE.BoxGeometry(4, 2.5, 4)
+const walls = new THREE.Mesh(
+    wallsGeometry,
+    new THREE.MeshStandardMaterial({ color: 0x888888 })
+)
+
+walls.position.y = 1.25
+
+house.add(walls)
+
 )
 scene.add(sphere)
 
