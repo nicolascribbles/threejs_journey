@@ -53,6 +53,16 @@ walls.position.y = 1.25
 
 house.add(walls)
 
+
+// Roof
+const roof = new THREE.Mesh(
+    new THREE.ConeGeometry(3.5, 2, 4, 1),
+    new THREE.MeshStandardMaterial({ color: 0x885522 })
+)
+roof.position.y = 3.5
+roof.rotation.y = Math.PI / 4
+
+house.add(roof)
 )
 scene.add(sphere)
 
