@@ -36,6 +36,11 @@ floor.rotation.x = -(Math.PI / 2)
 
 scene.add(floor)
 
+
+// Group 1
+// House
+const house = new THREE.Group()
+scene.add(house)
 )
 scene.add(sphere)
 
