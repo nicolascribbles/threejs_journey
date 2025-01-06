@@ -16,6 +16,37 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
+ * Textures
+ */
+
+const textureLoader = new THREE.TextureLoader()
+
+const fogGradientTexture = textureLoader.load('./floor/alpha.jpg')
+const coastSandRockDispTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg')
+const coastSandRockDiffTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg')
+const coastSandRockNorGLTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_nor_gl_1k.jpg')
+const coastSandRockARMTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_arm_1k.jpg')
+
+
+coastSandRockDiffTexture.repeat.set(8, 8)
+coastSandRockDiffTexture.wrapS = THREE.RepeatWrapping
+coastSandRockDiffTexture.wrapT = THREE.RepeatWrapping
+coastSandRockDiffTexture.colorSpace = THREE.SRGBColorSpace
+
+coastSandRockDispTexture.repeat.set(8, 8)
+coastSandRockDispTexture.wrapS = THREE.RepeatWrapping
+coastSandRockDispTexture.wrapT = THREE.RepeatWrapping
+
+
+coastSandRockNorGLTexture.repeat.set(8, 8)
+coastSandRockNorGLTexture.wrapS = THREE.RepeatWrapping
+coastSandRockNorGLTexture.wrapT = THREE.RepeatWrapping
+
+coastSandRockARMTexture.repeat.set(8, 8)
+coastSandRockARMTexture.wrapS = THREE.RepeatWrapping
+coastSandRockARMTexture.wrapT = THREE.RepeatWrapping
+
+/**
  * House
  */
 // Temporary sphere
