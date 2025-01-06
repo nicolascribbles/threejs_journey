@@ -102,6 +102,13 @@ const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
 const graveMaterial = new THREE.MeshStandardMaterial({ color: 0x888888 })
 
 const graves = new THREE.Group()
+
+for (let i = 0; i < 30; i++) {
+    const grave = new THREE.Mesh(graveGeometry, graveMaterial)
+    graves.add(grave)
+}
+
+scene.add(graves)
 /**
  * Lights
  */
