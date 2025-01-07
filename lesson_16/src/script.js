@@ -47,6 +47,15 @@ coastSandRockARMTexture.repeat.set(8, 8)
 coastSandRockARMTexture.wrapS = THREE.RepeatWrapping
 coastSandRockARMTexture.wrapT = THREE.RepeatWrapping
 
+// wall textures
+
+const wallTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_diff_1k.jpg')
+wallTexture.colorSpace = THREE.SRGBColorSpace
+
+const wallARMTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_arm_1k.jpg')
+const wallDifferenceTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_diff_1k.jpg')
+const wallNorGLTexture = textureLoader.load('./wall/castle_brick_broken_06_1k/castle_brick_broken_06_nor_gl_1k.jpg')
+
 /**
  * House
  */
@@ -98,7 +107,14 @@ scene.add(house)
 const wallsGeometry = new THREE.BoxGeometry(4, 2.5, 4)
 const walls = new THREE.Mesh(
     wallsGeometry,
-    new THREE.MeshStandardMaterial({ color: 0x888888 })
+    new THREE.MeshStandardMaterial({
+        map: wallTexture,
+        aoMap: wallARMTexture,
+        metalnessMap: wallARMTexture,
+        roughnessMap: wallARMTexture,
+        differenceMap: wallDifferenceTexture,
+        normalMap: wallNorGLTexture,
+    })
 )
 
 walls.position.y = 1.25
