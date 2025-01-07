@@ -21,6 +21,7 @@ const scene = new THREE.Scene()
 
 const textureLoader = new THREE.TextureLoader()
 
+// Floor textures
 const fogGradientTexture = textureLoader.load('./floor/alpha.jpg')
 const coastSandRockDispTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_disp_1k.jpg')
 const coastSandRockDiffTexture = textureLoader.load('./floor/coast_sand_rocks_02_1k/coast_sand_rocks_02_diff_1k.jpg')
