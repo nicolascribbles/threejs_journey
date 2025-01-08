@@ -11,3 +11,4 @@ Thank you Bruno Simon for the excellent threejs course program.
     In this demo, I test all of the different types of lighting provided by three.jsUpdate 1 on Tue Jan  7 00:53:03 UTC 2025
 Update 2 on Tue Jan  7 00:53:04 UTC 2025
 Update 1 on Wed Jan  8 00:52:52 UTC 2025
+Update 2 on Wed Jan  8 00:52:52 UTC 2025
