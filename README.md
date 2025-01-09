@@ -12,3 +12,4 @@ Thank you Bruno Simon for the excellent threejs course program.
 Update 2 on Tue Jan  7 00:53:04 UTC 2025
 Update 1 on Wed Jan  8 00:52:52 UTC 2025
 Update 2 on Wed Jan  8 00:52:52 UTC 2025
+Update 1 on Thu Jan  9 00:52:32 UTC 2025
