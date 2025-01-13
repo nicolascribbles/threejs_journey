@@ -99,13 +99,7 @@ bushColorTexture.wrapS = THREE.RepeatWrapping
 bushNormalTexture.wrapS = THREE.RepeatWrapping
 bushARMTexture.wrapS = THREE.RepeatWrapping
 
-roofTexture.repeat.set(3, 1)
-roofARMTexture.repeat.set(3, 1)
-roofNorGLTexture.repeat.set(3, 1)
 
-roofTexture.wrapS = THREE.RepeatWrapping
-roofARMTexture.wrapS = THREE.RepeatWrapping
-roofNorGLTexture.wrapS = THREE.RepeatWrapping
 
 /**
  * House
