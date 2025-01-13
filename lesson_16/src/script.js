@@ -197,15 +197,19 @@ house.add(roof)
 
 // Door
 const door = new THREE.Mesh(
-    new THREE.PlaneGeometry(2.2, 2.2),
+    new THREE.PlaneGeometry(2.2, 2.2, 100, 100),
     new THREE.MeshStandardMaterial({ 
         map: doorColorTexture,
+        transparent: true,
         normalMap: doorNormalTexture,
         alphaMap: doorAlphaTexture,
         aoMap: doorAmbientOcclusionTexture,
         heightMap: doorHeightTexture,
         metalnessMap: doorMetalnessTexture,
         roughnessMap: doorRoughnessTexture,
+        displacementMap: doorHeightTexture,
+        displacementScale: 0.15,
+        displacementBias: - 0.04,
     })
 )
 
