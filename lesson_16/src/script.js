@@ -198,7 +198,15 @@ house.add(roof)
 // Door
 const door = new THREE.Mesh(
     new THREE.PlaneGeometry(2.2, 2.2),
-    new THREE.MeshStandardMaterial({ color: 0x000000 })
+    new THREE.MeshStandardMaterial({ 
+        map: doorColorTexture,
+        normalMap: doorNormalTexture,
+        alphaMap: doorAlphaTexture,
+        aoMap: doorAmbientOcclusionTexture,
+        heightMap: doorHeightTexture,
+        metalnessMap: doorMetalnessTexture,
+        roughnessMap: doorRoughnessTexture,
+    })
 )
 
 door.position.y = 1
@@ -242,7 +250,14 @@ house.add(bush1, bush2, bush3, bush4)
 
 // Graves
 const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
-const graveMaterial = new THREE.MeshStandardMaterial({ color: 0x888888 })
+const graveMaterial = new THREE.MeshStandardMaterial({
+    map: graveColorTexture,
+    normalMap: graveNormalTexture,
+    aoMap: graveARMTexture,
+    metalnessMap: graveARMTexture,
+    roughnessMap: graveARMTexture,
+    alphaMap: graveARMTexture,
+})
 
 const graves = new THREE.Group()
 
