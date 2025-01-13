@@ -64,6 +64,26 @@ const roofARMTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_
 const roofDifferenceTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_02_diff_1k.jpg')
 const roofNorGLTexture = textureLoader.load('./roof/roof_slates_02_1k/roof_slates_02_nor_gl_1k.jpg')
 
+roofTexture.repeat.set(3, 1)
+roofARMTexture.repeat.set(3, 1)
+roofNorGLTexture.repeat.set(3, 1)
+
+roofTexture.wrapS = THREE.RepeatWrapping
+roofARMTexture.wrapS = THREE.RepeatWrapping
+roofNorGLTexture.wrapS = THREE.RepeatWrapping
+
+
+// door textures
+const doorColorTexture = textureLoader.load('./door/color.jpg')
+const doorNormalTexture = textureLoader.load('./door/normal.jpg')
+const doorAlphaTexture = textureLoader.load('./door/alpha.jpg')
+const doorAmbientOcclusionTexture = textureLoader.load('./door/ambientOcclusion.jpg')
+const doorHeightTexture = textureLoader.load('./door/height.jpg')
+const doorMetalnessTexture = textureLoader.load('./door/metalness.jpg')
+const doorRoughnessTexture = textureLoader.load('./door/roughness.jpg')
+
+doorColorTexture.colorSpace = THREE.SRGBColorSpace
+
 // bush textures
 const bushColorTexture = textureLoader.load('./bush/leaves_forest_ground_1k/leaves_forest_ground_diff_1k.jpg')
 const bushNormalTexture = textureLoader.load('./bush/leaves_forest_ground_1k/leaves_forest_ground_nor_gl_1k.jpg')
