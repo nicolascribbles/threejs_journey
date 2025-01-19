@@ -14,7 +14,7 @@ Thank you Bruno Simon for the excellent threejs course program.
     In this demo, I put it all together and make a haunted house scene with primitive threejs classes.
 
 ## Sending updates
-Update 2 on Tue Jan  7 00:53:04 UTC 2025
+<!-- Update 2 on Tue Jan  7 00:53:04 UTC 2025
 Update 1 on Wed Jan  8 00:52:52 UTC 2025
 Update 2 on Wed Jan  8 00:52:52 UTC 2025
 Update 1 on Thu Jan  9 00:52:32 UTC 2025
@@ -71,4 +71,4 @@ Update 3 on Sat Jan 18 00:48:54 UTC 2025
 Update 4 on Sat Jan 18 00:48:54 UTC 2025
 Update 5 on Sat Jan 18 00:48:54 UTC 2025
 Update 6 on Sat Jan 18 00:48:54 UTC 2025
-Update 1 on Sun Jan 19 00:55:02 UTC 2025
+Update 1 on Sun Jan 19 00:55:02 UTC 2025 -->
