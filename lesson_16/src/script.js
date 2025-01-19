@@ -366,9 +366,34 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 /**
+ * Shadows
+ */
+
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
+// cast and receive shadows
+directionalLight.castShadow = true
+ghost1.castShadow = true
+ghost2.castShadow = true
+ghost3.castShadow = true
+
+roof.castShadow = true
+walls.castShadow = true
+walls.receiveShadow = true
+floor.receiveShadow = true
+
+for(const grave of graves.children) {
+    grave.receiveShadow = true
+    grave.castShadow = true
+}
+
+/**
  * Animate
  */
 const timer = new Timer()
+
+
 
 const tick = () =>
 {
