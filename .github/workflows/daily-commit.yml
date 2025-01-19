@@ -1,6 +1,7 @@
 name: Random Daily Commits
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'  # Runs every day at midnight UTC
 
@@ -13,8 +14,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name 'nicolascribbles'
-          git config --global user.email 'nicolascribbles@gmail.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Make random number of commits
         run: |
@@ -29,4 +30,3 @@ jobs:
             fi
             git commit -m "$COMMIT_MESSAGE"
           done
-          git push
