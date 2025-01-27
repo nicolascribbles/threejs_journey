@@ -60,15 +60,26 @@ particlesGeometry.setAttribute(
 )
 
 
+const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial()
+)
+scene.add(cube)
+
 
 /**
  * Material
  */
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.02,
+    size: 0.2,
     sizeAttenuation: true,
     color: '#ff88cc',
-    map: particlesTexture,
+    alphaMap: particlesTexture,
+    transparent: true,
+    // alphaTest: 0.001,
+    // depthTest: false,
+    depthWrite: false,
+    // blending: THREE.AdditiveBlending,
 })
 
 
