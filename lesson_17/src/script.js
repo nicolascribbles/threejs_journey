@@ -24,30 +24,59 @@ const textureLoader = new THREE.TextureLoader()
  * Geometry
  */
 // const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
-const  particlesGeometry = new THREE.BufferGeometry()
 
-particlesGeometry.setDrawRange(0, 100)
+// My attempt
+// const  particlesGeometry = new THREE.BufferGeometry()
 
-const positions = new Float32Array(100 * 3)
+// particlesGeometry.setDrawRange(0, 100)
 
-for(let i = 0; i < 100; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 4
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 4
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 4
+// const positions = new Float32Array(100 * 3)
+
+// for(let i = 0; i < 100; i++) {
+//     positions[i * 3] = (Math.random() - 0.5) * 4
+//     positions[i * 3 + 1] = (Math.random() - 0.5) * 4
+//     positions[i * 3 + 2] = (Math.random() - 0.5) * 4
+// }
+
+// particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+
+// End of my attempt
+// textures
+const particlesTexture = textureLoader.load('./textures/particles/2.png')
+
+// Start of tutorial
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 500
+
+const positions = new Float32Array(count * 3)
+
+for(let i =0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10
 }
 
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3)
+)
+
+
+
 /**
  * Material
  */
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.02,
     sizeAttenuation: true,
+    color: '#ff88cc',
+    map: particlesTexture,
 })
+
+
 
 // GUI
 gui.add(particlesMaterial, 'size').min(0.01).max(0.1).step(0.001)
 gui.add(particlesMaterial, 'sizeAttenuation').min(0).max(1).step(0.001)
+
 
 /**
  * Points
