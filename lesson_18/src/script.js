@@ -20,7 +20,8 @@ const scene = new THREE.Scene()
 const galaxyParameters = {
     count: 1000,
     size: 0.02,
-    // branches: 3,
+    radius: 5,
+    branches: 3,
     // spin: 1,
     // randomness: 0.5,
     // randomnessPower: 3,
@@ -44,7 +45,6 @@ const generateGalaxy = () => {
         scene.remove(points)
     }
 
-
     geometry = new THREE.BufferGeometry()
     material = new THREE.PointsMaterial({
         size: galaxyParameters.size,
@@ -56,12 +56,20 @@ const generateGalaxy = () => {
     
     const positions = new Float32Array(galaxyParameters.count * 3)
     const colors = new Float32Array(galaxyParameters.count * 3)
+    
     for(let i = 0; i < galaxyParameters.count; i++) {
         const i3 = i * 3
+        const radius = Math.random() * galaxyParameters.radius
+        const branchAngle = ((i % galaxyParameters.branches) / galaxyParameters.branches) * Math.PI * 2
+
+        const x = Math.cos(branchAngle) * radius
+        const y = 0
+        const z = Math.sin(branchAngle) * radius
+
         
-        positions[i3] = (Math.random() - 0.5) * 3
-        positions[i3+1] = (Math.random() - 0.5) * 3
-        positions[i3+2] = (Math.random() - 0.5) * 3
+        positions[i3] = x
+        positions[i3+1] = y
+        positions[i3+2] = z
 
         colors[i3] = Math.random()
         colors[i3+1] = Math.random()
@@ -79,6 +87,7 @@ const generateGalaxy = () => {
     )
 
 
+
     points = new THREE.Points(geometry, material)
     scene.add(points)
 
@@ -89,6 +98,9 @@ generateGalaxy()
 
 gui.add(galaxyParameters, 'count').min(100).max(1000).step(100).onFinishChange(generateGalaxy)
 gui.add(galaxyParameters, 'size').min(0.01).max(10).step(0.01).onFinishChange(generateGalaxy)
+gui.add(galaxyParameters, 'radius').min(0).max(20).step(0.01).onFinishChange(generateGalaxy)
+gui.add(galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy)
+
 /**
  * Sizes
  */
