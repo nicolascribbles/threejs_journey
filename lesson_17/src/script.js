@@ -23,8 +23,20 @@ const textureLoader = new THREE.TextureLoader()
 /**
  * Geometry
  */
-const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+// const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+const  particlesGeometry = new THREE.BufferGeometry()
 
+particlesGeometry.setDrawRange(0, 100)
+
+const positions = new Float32Array(100 * 3)
+
+for(let i = 0; i < 100; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 4
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 4
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 4
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
 /**
  * Material
  */
