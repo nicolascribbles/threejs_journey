@@ -66,6 +66,10 @@ particlesGeometry.setAttribute(
     new THREE.BufferAttribute(colors, 3)
 )
 
+// particlesGeometry.setAttribute(
+
+// )
+
 /**
  * Material
  */
@@ -118,6 +122,7 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
 })
 
 /**
@@ -153,11 +158,28 @@ const tick = () =>
     // Update controls
     controls.update()
 
+    // Update particles
+    // particles.rotation.x = Math.sin(elapsedTime * 0.1)
+    // particles.rotation.y = Math.cos(elapsedTime * 0.1)
+    for(let i = 0; i < count; i++) {
+        const i3 = i * 3
+        // positions[i3] = Math.sin(elapsedTime + i)
+        // positions[i3 + 1] = Math.cos(elapsedTime + i)
+        // positions[i3 + 2] = 0
+        const x = particlesGeometry.attributes.position.array[i3]
+        particlesGeometry.attributes.position.array[i3+1] = Math.sin(elapsedTime + x)
+
+    }
+    // particlesGeometry.attributes.position.needsUpdate = true
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+    
     // Render
     renderer.render(scene, camera)
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
+
+
 }
 
 tick()
