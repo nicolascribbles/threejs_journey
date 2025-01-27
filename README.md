@@ -16,6 +16,8 @@ Thank you Bruno Simon for the excellent threejs course program.
 - [Lesson 17 - Particle Wave](https://threejs-journey-particle-wave.vercel.app/)
     In this demo, I learn how to create particles using the Points objects by Three.js
 
+- [Lesson 18 - Particle Galaxy](https://threejs-journey-ioyb.vercel.app/)
+    In this demo, I create a galaxy generator with debug controls.
 
 <!-- Update 2 on Tue Jan  7 00:53:04 UTC 2025
 Update 1 on Wed Jan  8 00:52:52 UTC 2025
