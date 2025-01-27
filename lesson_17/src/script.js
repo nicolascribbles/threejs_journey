@@ -19,14 +19,29 @@ const scene = new THREE.Scene()
  */
 const textureLoader = new THREE.TextureLoader()
 
+
 /**
- * Test cube
+ * Geometry
  */
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial()
-)
-scene.add(cube)
+const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+
+/**
+ * Material
+ */
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    sizeAttenuation: true,
+})
+
+// GUI
+gui.add(particlesMaterial, 'size').min(0.01).max(0.1).step(0.001)
+gui.add(particlesMaterial, 'sizeAttenuation').min(0).max(1).step(0.001)
+
+/**
+ * Points
+ */
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
 
 /**
  * Sizes
