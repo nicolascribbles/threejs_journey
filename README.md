@@ -13,6 +13,10 @@ Thank you Bruno Simon for the excellent threejs course program.
 - [Lesson 16- Haunted House](https://threejs-journey-haunted-house-coz02g9qu.vercel.app/)
     In this demo, I put it all together and make a haunted house scene with primitive threejs classes.
 
+- [Lesson 17 - Particle Wave](https://threejs-journey-particle-wave.vercel.app/)
+    In this demo, I learn how to create particles using the Points objects by Three.js
+
+
 <!-- Update 2 on Tue Jan  7 00:53:04 UTC 2025
 Update 1 on Wed Jan  8 00:52:52 UTC 2025
 Update 2 on Wed Jan  8 00:52:52 UTC 2025
